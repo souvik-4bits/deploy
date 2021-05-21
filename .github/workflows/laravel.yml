@@ -53,15 +53,14 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Deployment
-        uses: appleboy/ssh-action@main
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.TOP_SECRET }}
-          username: ${{ secrets.SSH_USERNAME }}
-          script: |
+     - name: executing remote ssh commands using password
+    uses: appleboy/ssh-action@main
+      with:
+       host: ${{ secrets.SSH_HOST }}
+       username: ${{ secrets.SSH_USERNAME }}
+       password: ${{ secrets.PASSWORD }}
+       port: ${{ secrets.SSH_PORT }}
+       script: whoami
             cd /var/www/html/
             git checkout -f 
             git pull origin master
