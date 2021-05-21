@@ -24,6 +24,7 @@ jobs:
            username: ${{ secrets.SSH_USERNAME }}
            key: ${{ secrets.TOP_SECRET }}
            port: ${{ secrets.SSH_PORT }}
+           keyPath: /root/.ssh/id_rsa.key
            script: |
             cd /var/www/html/
             git checkout -f 
