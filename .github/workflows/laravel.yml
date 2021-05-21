@@ -22,7 +22,7 @@ jobs:
         with:
            host: ${{ secrets.SSH_HOST }}
            username: ${{ secrets.SSH_USERNAME }}
-           key: ${{ secrets.TOP_SECRET }}
+           key: ${{ secrets.Secre }}
            port: ${{ secrets.SSH_PORT }}
            script: |
             cd /var/www/html/
