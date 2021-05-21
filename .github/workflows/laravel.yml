@@ -2,9 +2,9 @@ name: Laravel
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   laravel-tests:
@@ -53,14 +53,16 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-     - name: executing remote ssh commands using password
-    uses: appleboy/ssh-action@main
-      with:
-       host: ${{ secrets.SSH_HOST }}
-       username: ${{ secrets.SSH_USERNAME }}
-       password: ${{ secrets.PASSWORD }}
-       port: ${{ secrets.SSH_PORT }}
-       script: whoami
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
             cd /var/www/html/
             git checkout -f 
             git pull origin master
