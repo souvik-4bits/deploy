@@ -52,7 +52,7 @@ jobs:
 
         host: ${{ secrets.SSH_HOST }}
 
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.TOP_SECRET }}
 
         username: ${{ secrets.SSH_USERNAME }}
 
