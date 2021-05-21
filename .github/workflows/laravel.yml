@@ -53,13 +53,16 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v0.1.4
+
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deployment
         uses: appleboy/ssh-action@main
         with:
-           host: ${{ secrets.HOST }}
-           username: ${{ secrets.USERNAME }}
+           host: ${{ secrets.SSH_HOST }}
+           username: ${{ secrets.SSH_USERNAME }}
            password: ${{ secrets.PASSWORD }}
            port: ${{ secrets.PORT }}
            script: |
