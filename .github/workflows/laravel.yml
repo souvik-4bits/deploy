@@ -20,10 +20,10 @@ jobs:
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
-           host: ${{ secrets.SSH_HOST }}
-           username: ${{ secrets.SSH_USERNAME }}
-           key: ${{ secrets.TOP_SECRET }}
-           port: ${{ secrets.SSH_PORT }}
+           host: ${{ base.SSH_HOST }}
+           username: ${{ base.SSH_USERNAME }}
+           key: ${{ base.TOP_SECRET }}
+           port: ${{ base.SSH_PORT }}
            script: |
             cd /var/www/html/
             git checkout -f 
